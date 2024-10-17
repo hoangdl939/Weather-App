@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:background="@drawable/background"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/searchTxt"
+    android:background="@drawable/background"
+    android:hint="Search Locations"
+    android:padding="10dp"
+    android:textSize="20sp"
+    android:textColorHint="@android:color/white"
+    android:gravity="center_vertical"
+    android:drawableEnd="@drawable/search_icon"
+    android:layout_marginBottom="2dp" />
+
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent">
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingBottom="50dp"
+        tools:context=".LocationActivity">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rcv_saved_locations"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="15dp"
+          android:layout_marginTop="100dp"
+          android:background="@drawable/rv_background"
+          android:padding="15dp" />
+      </RelativeLayout>
+    </ScrollView>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
