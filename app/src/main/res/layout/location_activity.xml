@@ -6,4 +6,16 @@
   android:background="@drawable/background"
   android:layout_height="match_parent"
   android:orientation="vertical">
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/searchTxt"
+    android:background="@drawable/background"
+    android:hint="Search Locations"
+    android:padding="10dp"
+    android:textSize="20sp"
+    android:textColorHint="@android:color/white"
+    android:gravity="center_vertical"
+    android:drawableEnd="@drawable/search_icon"
+    android:layout_marginBottom="2dp" />
 </LinearLayout>
