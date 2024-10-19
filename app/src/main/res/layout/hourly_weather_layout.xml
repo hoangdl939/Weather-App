@@ -19,5 +19,17 @@
     android:layout_marginVertical="10dp"
     android:src="@drawable/moon" />
 
- 
-  </LinearLayout>
+  <TextView
+    android:id="@+id/row_hour_temperature"
+    android:textSize="15sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="21" />
+
+  <TextView
+    android:id="@+id/row_hour_humidity"
+    android:textSize="15sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="2%" />
+</LinearLayout>
