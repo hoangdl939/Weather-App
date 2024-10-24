@@ -59,4 +59,15 @@ public class LocationHelper {
                 });
     }
 
+    public void checkLocationPermission(OnSuccessListener<Location> successListener,
+        OnFailureListener failureListener) {
+        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            checkGPS(successListener, failureListener);
+        } else {
+            ActivityCompat.requestPermissions(activity,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, DefaultConfig.REQUEST_CODE);
+        }
+    }
+
 }
