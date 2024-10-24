@@ -140,5 +140,27 @@ public class DailyWeather {
         this.lastUpdate = lastUpdate;
     }
 
+    public static DailyWeather fromJson(JSONObject dailyData, long locationId) throws JSONException {
+        long time = dailyData.getLong("dt") * 1000;
+        long sunrise = dailyData.getLong("sunrise") * 1000;
+        long sunset = dailyData.getLong("sunset") * 1000;
 
+        JSONObject temp = dailyData.getJSONObject("temp");
+        double minTemp = temp.getDouble("min");
+        double maxTemp = temp.getDouble("max");
+        JSONObject weather = dailyData.getJSONArray("weather").getJSONObject(0);
+        String mainWeather = weather.getString("main");
+        String description = weather.getString("description");
+
+        return new DailyWeather(time, sunrise, sunset, minTemp, maxTemp, mainWeather, description,
+            locationId);
+    }
+
+    public static List<DailyWeather> fromJsonArray(JSONArray dailyData, long locationId) throws JSONException {
+        List<DailyWeather> dailyWeathers = new ArrayList<>();
+        for (int i = 0; i < dailyData.length(); i++) {
+            dailyWeathers.add(fromJson(dailyData.getJSONObject(i), locationId));
+        }
+        return dailyWeathers;
+    }
 }
