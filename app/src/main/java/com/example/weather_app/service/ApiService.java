@@ -72,4 +72,49 @@ public class ApiService {
         requestQueue.add(stringRequest);
     }
 
+    public void getGeocoding(String locationName) {
+        if (!hasInternetConnection()) {
+            Toast.makeText(context, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String requestUrl = geocodingUrl + "?q=" + locationName + "&appid=" + apiKey;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, requestUrl,
+            response -> {
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    List<AppLocation> appLocationList = new ArrayList<>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject location = jsonArray.getJSONObject(i);
+                        String name = location.getString("name");
+                        double latitude = location.getDouble("lat");
+                        double longitude = location.getDouble("lon");
+                        String state = location.getString("state");
+                        String country = location.getString("country");
+
+                        appLocationList.add(
+                            new AppLocation(name, latitude, longitude, state, country));
+                    }
+                    // TODO: add data to db
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+
+
+
+    private boolean hasInternetConnection() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
+            Context.CONNECTIVITY_SERVICE);
+        return cm.getNetworkCapabilities(cm.getActiveNetwork()) != null;
+    }
 }
