@@ -44,4 +44,18 @@ public class ApiService {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+    public void getDailyWeather(double latitude, double longitude,
+        Response.Listener<String> dailyListener) {
+        String requestUrl =
+            dailyWeatherUrl + "?lat=" + latitude + "&lon=" + longitude + "&cnt="  + NUMBER_OF_DAYS
+                +  "&lang=vi" + "&appid=" + apiKey;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, requestUrl,
+            dailyListener,
+            error -> Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show());
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+
 }
