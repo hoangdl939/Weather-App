@@ -34,6 +34,38 @@ public class LocationHelper {
         this.activity = activity;
     }
 
+    public void checkGPS(OnSuccessListener<Location> successListener,
+        OnFailureListener failureListener) {
+        long timeInterval = 1000;
+        LocationRequest locationRequest = new LocationRequest.Builder(
+            Priority.PRIORITY_HIGH_ACCURACY, timeInterval).setWaitForAccurateLocation(true).build();
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(
+            locationRequest).setAlwaysShow(true);
+
+        Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(context)
+            .checkLocationSettings(builder.build());
+
+        result.addOnCompleteListener(task -> {
+            try {
+                // when GPS is already on
+                task.getResult(ApiException.class);
+                getCurrentLocation(successListener, failureListener);
+            } catch (ApiException e) {
+                if (e.getStatusCode() == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
+                    try {
+                        // try to ask user turn on GPS
+                        ResolvableApiException resolvableApiException = (ResolvableApiException) e;
+                        resolvableApiException.startResolutionForResult(activity,
+                            DefaultConfig.REQUEST_CHECK_SETTING);
+                    } catch (SendIntentException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
     public void getCurrentLocation(OnSuccessListener<Location> successListener,
         OnFailureListener failureListener) {
         if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION)
