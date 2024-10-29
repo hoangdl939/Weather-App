@@ -95,4 +95,38 @@ public class AppLocation implements Serializable {
         this.country = country;
     }
 
+
+    @Override
+    public String toString() {
+        return "AppLocation{" + "id=" + id + ", name='" + name + '\'' + ", latitude=" + latitude
+            + ", longitude=" + longitude + ", state='" + state + '\'' + ", country='" + country
+            + '\'' + '}';
+    }
+
+    public static AppLocation fromJson(JSONObject locationData) throws JSONException {
+        String name = locationData.getString("name");
+        double latitude = locationData.getDouble("lat");
+        double longitude = locationData.getDouble("lon");
+        String state = "";
+        if (locationData.has("state")) {
+            state = locationData.getString("state");
+        }
+        String country = locationData.getString("country");
+
+        return new AppLocation(name, latitude, longitude, state, country);
+    }
+
+    public static List<AppLocation> fromJsonArray(JSONArray locationDataArray)
+        throws JSONException {
+        List<AppLocation> locationWeathers = new ArrayList<>();
+        for (int i = 0; i < locationDataArray.length(); i++) {
+            JSONObject locationData = locationDataArray.getJSONObject(i);
+            AppLocation locationWeather = AppLocation.fromJson(locationData);
+            locationWeathers.add(locationWeather);
+        }
+        return locationWeathers;
+    }
+}
+
+
     
