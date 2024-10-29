@@ -95,7 +95,6 @@ public class AppLocation implements Serializable {
         this.country = country;
     }
 
-
     @Override
     public String toString() {
         return "AppLocation{" + "id=" + id + ", name='" + name + '\'' + ", latitude=" + latitude
@@ -127,6 +126,3 @@ public class AppLocation implements Serializable {
         return locationWeathers;
     }
 }
-
-
-    
