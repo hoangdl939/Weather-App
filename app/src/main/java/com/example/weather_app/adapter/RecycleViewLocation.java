@@ -10,10 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
-import com.example.weatherapp.R;
-import com.example.weatherapp.dao.AppDatabase;
-import com.example.weatherapp.dao.LocationDao;
-import com.example.weatherapp.model.AppLocation;
+import com.example.weather_app.R;
+import com.example.weather_app.dao.AppDatabase;
+import com.example.weather_app.dao.LocationDao;
+import com.example.weather_app.model.AppLocation;
 import java.util.List;
 
 public class RecycleViewLocation extends RecyclerView.Adapter<RecycleViewLocation.ViewHolder>{
@@ -33,10 +33,10 @@ public class RecycleViewLocation extends RecyclerView.Adapter<RecycleViewLocatio
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecycleViewLocation.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_location, parent, false);
-        return new ViewHolder(view);
+        return new RecycleViewLocation.ViewHolder(view);
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -66,7 +66,7 @@ public class RecycleViewLocation extends RecyclerView.Adapter<RecycleViewLocatio
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecycleViewLocation.ViewHolder holder, int position) {
         String name = appLocations.get(position).getName();
         String country = appLocations.get(position).getCountry();
 

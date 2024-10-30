@@ -1,4 +1,4 @@
-package com.example.weatherapp.adapter;
+package com.example.weather_app.adapter;
 
 import android.content.Context;
         import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.content.Context;
         import android.widget.TextView;
 
         import com.android.volley.Response;
-        import com.example.weatherapp.R;
-        import com.example.weatherapp.model.AppLocation;
-        import com.example.weatherapp.service.ApiService;
+        import com.example.weather_app.R;
+        import com.example.weather_app.model.AppLocation;
+        import com.example.weather_app.service.ApiService;
 
         import org.json.JSONArray;
         import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.example.weatherapp;
+package com.example.weather_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,12 +27,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
-import com.example.weatherapp.adapter.LocationListAdapter;
-import com.example.weatherapp.adapter.RecycleViewLocation;
-import com.example.weatherapp.dao.AppDatabase;
-import com.example.weatherapp.dao.LocationDao;
-import com.example.weatherapp.model.AppLocation;
-import com.example.weatherapp.service.ApiService;
+import com.example.weather_app.adapter.LocationListAdapter;
+import com.example.weather_app.adapter.RecycleViewLocation;
+import com.example.weather_app.dao.AppDatabase;
+import com.example.weather_app.dao.LocationDao;
+import com.example.weather_app.model.AppLocation;
+import com.example.weather_app.service.ApiService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -96,3 +96,46 @@ public class LocationActivity extends AppCompatActivity {
                             public boolean onQueryTextSubmit(String query) {
                                 return false;
                             }
+                            @Override
+                            public boolean onQueryTextChange(String newText) {
+                                String text = newText;
+                                Response.Listener<String> locationListener2 = response -> {
+                                    try {
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        appLocations = (ArrayList<AppLocation>) AppLocation.fromJsonArray(jsonArray);
+                                        // Pass results to ListViewAdapter Class
+                                        adapter = new LocationListAdapter(context, appLocations);
+                                        adapter.notifyDataSetChanged();
+                                        // Binds the Adapter to the ListView
+                                        listView.setAdapter(adapter);
+                                        // TODO: add data to db
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                };
+                                apiService.getGeocodingTest(text, locationListener2);
+                                return false;
+                            }
+                        });
+                    }
+                });
+        RecyclerView recycleViewLocation = findViewById(R.id.rcv_saved_locations);
+        RecycleViewLocation recycleViewLocationAdapter = new RecycleViewLocation(locationDao.getAllLocations(), this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recycleViewLocation.setLayoutManager(linearLayoutManager);
+        recycleViewLocation.setAdapter(recycleViewLocationAdapter);
+    }
+
+    Response.Listener<String> locationListener = response -> {
+        try {
+            JSONArray jsonArray = new JSONArray(response);
+            appLocations = (ArrayList<AppLocation>) AppLocation.fromJsonArray(jsonArray);
+            System.out.println(appLocations);
+            // TODO: add data to db
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    };
+
+}

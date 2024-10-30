@@ -1,4 +1,4 @@
-package com.example.weatherapp.adapter;
+package com.example.weather_app.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.weatherapp.util.DefaultConfig;
-import com.example.weatherapp.R;
-import com.example.weatherapp.model.HourlyWeather;
+import com.example.weather_app.util.DefaultConfig;
+import com.example.weather_app.R;
+import com.example.weather_app.model.HourlyWeather;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

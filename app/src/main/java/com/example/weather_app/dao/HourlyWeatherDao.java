@@ -1,10 +1,10 @@
-package com.example.weatherapp.dao;
+package com.example.weather_app.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.weatherapp.model.HourlyWeather;
+import com.example.weather_app.model.HourlyWeather;
 
 import java.util.List;
 

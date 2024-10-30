@@ -1,4 +1,4 @@
-package com.example.weatherapp.util;
+package com.example.weather_app.util;
 
 import android.Manifest;
 import android.app.Activity;
@@ -9,8 +9,8 @@ import android.location.Location;
 import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import com.example.weatherapp.MainActivity;
-import com.example.weatherapp.model.AppLocation;
+import com.example.weather_app.MainActivity;
+import com.example.weather_app.model.AppLocation;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;

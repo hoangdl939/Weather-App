@@ -1,7 +1,7 @@
-package com.example.weatherapp.service;
+package com.example.weather_app.service;
 
-import static com.example.weatherapp.util.DefaultConfig.NUMBER_OF_DAYS;
-import static com.example.weatherapp.util.DefaultConfig.NUMBER_OF_HOURS;
+import static com.example.weather_app.util.DefaultConfig.NUMBER_OF_DAYS;
+import static com.example.weather_app.util.DefaultConfig.NUMBER_OF_HOURS;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -13,7 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.weatherapp.model.AppLocation;
+import com.example.weather_app.model.AppLocation;
 
 import org.json.JSONArray;
 import org.json.JSONException;

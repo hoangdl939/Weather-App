@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal"
+  android:layout_gravity="center_vertical"
+  android:padding="10dp">
+
+  <TextView
+    android:id="@+id/row_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="hanoi"
+    android:textSize="20sp"
+      />
+
+  <TextView
+    android:id="@+id/row_country"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+      android:layout_below="@+id/row_name"
+    android:text="VN"
+      android:layout_marginLeft="10dp"
+    android:textSize="20sp"
+      />
+
+  <Button
+    android:id="@+id/btnDelete"
+      android:layout_alignParentRight="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#991b1b"
+    android:text="Delete" />
+
+</RelativeLayout>

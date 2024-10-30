@@ -1,7 +1,7 @@
-package com.example.weatherapp.util;
+package com.example.weather_app.util;
 
-import com.example.weatherapp.R;
-import com.example.weatherapp.model.AppLocation;
+import com.example.weather_app.R;
+import com.example.weather_app.model.AppLocation;
 import java.util.HashMap;
 
 public class DefaultConfig {

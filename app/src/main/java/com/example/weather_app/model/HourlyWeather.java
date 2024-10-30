@@ -1,4 +1,4 @@
-package com.example.weatherapp.model;
+package com.example.weather_app.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
