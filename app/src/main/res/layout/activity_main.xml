@@ -242,6 +242,189 @@
             android:id="@+id/share_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_marginTop="15dp"
+            android:text="Loading..." />
+        </LinearLayout>
+        <!--endregion-->
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/weatherByHour"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/generalInfo"
+          android:layout_marginHorizontal="15dp"
+          android:layout_marginTop="100dp"
+          android:background="@drawable/rv_background"
+          android:padding="15dp" />
+
+        <TableLayout
+          android:id="@+id/daily_weather"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/weatherByHour"
+          android:layout_marginHorizontal="15dp"
+          android:layout_marginTop="20dp"
+          android:background="@drawable/rv_background"
+          android:padding="15dp"
+          android:stretchColumns="*" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_marginHorizontal="15dp"
+          android:layout_marginTop="20dp"
+          android:layout_below="@+id/daily_weather"
+          android:layout_height="wrap_content"
+          android:id="@+id/sun">
+
+          <RelativeLayout
+            android:layout_width="0dp"
+            android:padding="15dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rv_background"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+              android:id="@+id/sun_rise"
+              style="@style/normalTextStyle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Sun rise" />
+            <TextView
+              android:id="@+id/sun_rise_time"
+              style="@style/textLg"
+              android:layout_below="@+id/sun_rise"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="05:59" />
+          </RelativeLayout>
+
+          <RelativeLayout
+            android:layout_width="0dp"
+            android:padding="15dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rv_background"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+              android:id="@+id/sun_set"
+              style="@style/normalTextStyle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Sun set" />
+            <TextView
+              android:id="@+id/sun_set_time"
+              android:layout_below="@+id/sun_set"
+              style="@style/textLg"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="18:10" />
+
+          </RelativeLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_marginHorizontal="15dp"
+          android:layout_marginTop="20dp"
+          android:layout_below="@+id/sun"
+          android:layout_height="wrap_content"
+          android:baselineAligned="false">
+          <RelativeLayout
+            android:layout_width="0dp"
+            android:padding="15dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rv_background"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+              android:id="@+id/feelLike"
+              style="@style/normalTextStyle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Feel like" />
+            <TextView
+              android:id="@+id/feelLikeContent"
+              android:layout_below="@id/feelLike"
+              style="@style/textLg"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="5" />
+
+          </RelativeLayout>
+
+          <RelativeLayout
+            android:layout_width="0dp"
+            android:padding="15dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rv_background"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+              android:id="@+id/pressure"
+              style="@style/normalTextStyle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Pressure" />
+            <TextView
+              android:id="@+id/pressureContent"
+              android:layout_below="@id/pressure"
+              style="@style/textLg"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="0" />
+            <TextView
+              android:id="@+id/pressure_unit"
+              android:layout_below="@+id/pressureContent"
+              style="@style/normalTextStyle"
+              android:paddingLeft="5dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="hPa" />
+
+          </RelativeLayout>
+        </LinearLayout>
+
+
+      </RelativeLayout>
+    </ScrollView>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:background="#46457e"
+    android:paddingVertical="3dp"
+    android:paddingHorizontal="15dp"
+    android:layout_height="wrap_content">
+    <TextView
+      android:id="@+id/menu_btn"
+      android:layout_gravity="end"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="25sp"
+      android:background="#46457e"
+      android:padding="2dp"
+      android:text="=" />
+
+    <!-- Nút để mở NotificationSettingsActivity -->
+    <Button
+        android:id="@+id/btn_open_notification_settings"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cài đặt thông báo"
+        android:layout_marginStart="10dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4A5C8C"/>
+        <Button
+            android:id="@+id/share_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Share" />
     </LinearLayout>
 </LinearLayout>
