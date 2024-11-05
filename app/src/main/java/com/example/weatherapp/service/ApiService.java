@@ -25,8 +25,9 @@ import java.util.List;
 public class ApiService {
     private Context context;
     private final String apiKey = "b4408e48ed0b9adc52d854b0e7a1a67f";
+    private final String apiKeyD = "bd5e378503939ddaee76f12ad7a97608";
     private final String hourlyWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast";
-    private final String dailyWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast";
+    private final String dailyWeatherUrl = "https://api.openweathermap.org/data/2.5/forecast/daily";
     private final String geocodingUrl = "http://api.openweathermap.org/geo/1.0/direct";
 
     public ApiService(Context context) {
@@ -49,7 +50,7 @@ public class ApiService {
         Response.Listener<String> dailyListener) {
         String requestUrl =
             dailyWeatherUrl + "?lat=" + latitude + "&lon=" + longitude + "&cnt="  + NUMBER_OF_DAYS
-                +  "&lang=vi" + "&appid=" + apiKey;
+                +  "&lang=vi" + "&appid=" + apiKeyD;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, requestUrl,
             dailyListener,
             error -> Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show());
@@ -108,10 +109,6 @@ public class ApiService {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
-
-
-
-
     private boolean hasInternetConnection() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
             Context.CONNECTIVITY_SERVICE);
