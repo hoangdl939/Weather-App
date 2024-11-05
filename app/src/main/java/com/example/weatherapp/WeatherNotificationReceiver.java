@@ -36,7 +36,7 @@ public class WeatherNotificationReceiver extends BroadcastReceiver {
                 String humidity = "Độ ẩm: " + firstHourlyWeather.getHumidity() + "%";
                 String description = firstHourlyWeather.getDescription();
 
-                sendNotification(context, "Thời tiết hôm nay ", "Trời có " + description + "\n" + "Nhiệt độ: " + temperature  + ", " + humidity);
+                sendNotification(context, "Thời tiết hôm nay ", "Hôm nay " + description + "\n" + "Nhiệt độ: " + temperature  + ", " + humidity);
 
             } catch (JSONException e) {
                 e.printStackTrace();
