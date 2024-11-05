@@ -302,8 +302,10 @@ public class MainActivity extends AppCompatActivity {
         tvSunset.setText(sunsetTime);
     }
     private void setUpFeelLike(double feelLike){
+        feelLike = feelLike - DefaultConfig.KELVIN_DELTA;
+
         TextView tvFeelLike = findViewById(R.id.feelLikeContent);
-        tvFeelLike.setText(String.valueOf(feelLike));
+        tvFeelLike.setText(String.format("%.1f°C", feelLike));
     }
 
     private void setUpPressure(int pressure){
