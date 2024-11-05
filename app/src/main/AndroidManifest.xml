@@ -36,6 +36,13 @@
         android:name="android.app.lib_name"
         android:value="" />
     </activity>
+    <activity
+        android:name=".MapActivity"
+        android:label="MapActivity">
+      <meta-data
+          android:name="android.app.lib_name"
+          android:value="" />
+    </activity>
     <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="${applicationId}.fileprovider"
@@ -45,6 +52,9 @@
           android:name="android.support.FILE_PROVIDER_PATHS"
           android:resource="@xml/file_paths" />
     </provider>
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAvQQJPycpa1XokLdjzPoHN92Y7RA6Wr5Q"/>
   </application>
 
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

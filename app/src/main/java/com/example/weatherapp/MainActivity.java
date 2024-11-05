@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
                 getWeatherData();
             }
         }
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 
