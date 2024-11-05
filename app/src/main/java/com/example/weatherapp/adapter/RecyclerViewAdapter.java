@@ -81,10 +81,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         int hourInt = Integer.parseInt(hour);
         if (hourInt >= 6 && hourInt < 18) {
             holder.getIcon().setImageResource(DefaultConfig.getIconResource(weather));
-
         } else {
-            holder.getIcon().setImageResource(R.drawable.moon);
-
+            holder.getIcon().setImageResource(DefaultConfig.getIconNightResource(weather));
         }
 
         holder.getTemperature().setText(String.valueOf(tempInCelsius));
