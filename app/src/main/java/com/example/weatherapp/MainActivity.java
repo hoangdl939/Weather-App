@@ -113,9 +113,16 @@ public class MainActivity extends AppCompatActivity {
             activityResultLauncher.launch(intent);
         });
 
+        Button openNotificationSettings = findViewById(R.id.btn_open_notification_settings);
+        openNotificationSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NotificationSettingActivity.class);
+            intent.putExtra("latitude", appLocation.getLatitude());
+            intent.putExtra("longitude", appLocation.getLongitude());
+            startActivity(intent);
+        });
+
         Button shareBtn = findViewById(R.id.share_btn);
         shareBtn.setOnClickListener(v -> shareWeatherInfo());
-
     }
 
     // activity launcher
