@@ -226,7 +226,6 @@
             android:padding="2dp"
             android:text="=" />
 
-        <!-- Nút để mở NotificationSettingsActivity -->
         <Button
             android:id="@+id/btn_open_notification_settings"
             android:layout_gravity="end"
@@ -239,9 +238,13 @@
 
         <Button
             android:id="@+id/share_btn"
+            android:layout_gravity="end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share" />
+            android:text="Share"
+            android:layout_marginStart="10dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4A5C8C"/>
 
     </LinearLayout>
 </LinearLayout>

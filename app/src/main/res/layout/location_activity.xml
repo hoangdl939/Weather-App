@@ -48,7 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Chọn Vị Trí Từ Bản Đồ"
-            android:layout_margin="16dp"/>
+            android:layout_margin="16dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4A5C8C"/>
 
       </RelativeLayout>
     </ScrollView>
