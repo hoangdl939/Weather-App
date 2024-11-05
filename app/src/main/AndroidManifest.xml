@@ -41,19 +41,25 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".LocationActivity"
-            android:label="LocationActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-            <provider
+      <meta-data
+        android:name="android.app.lib_name"
+        android:value="" />
+    </activity>
+    <activity
+      android:name=".LocationActivity"
+      android:label="LocationActivity">
+      <meta-data
+        android:name="android.app.lib_name"
+        android:value="" />
+    </activity>
+    <activity
+        android:name=".MapActivity"
+        android:label="MapActivity">
+      <meta-data
+          android:name="android.app.lib_name"
+          android:value="" />
+    </activity>
+    <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="${applicationId}.fileprovider"
         android:exported="false"
@@ -62,6 +68,13 @@
           android:name="android.support.FILE_PROVIDER_PATHS"
           android:resource="@xml/file_paths" />
     </provider>
-    </application>
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAvQQJPycpa1XokLdjzPoHN92Y7RA6Wr5Q"/>
+  </application>
+
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

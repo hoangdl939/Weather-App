@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -33,6 +34,7 @@ import com.example.weatherapp.dao.AppDatabase;
 import com.example.weatherapp.dao.LocationDao;
 import com.example.weatherapp.model.AppLocation;
 import com.example.weatherapp.service.ApiService;
+import com.example.weatherapp.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +59,13 @@ public class LocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_activity);
+
+        Button selectLocationButton = findViewById(R.id.select_location_button);
+        selectLocationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LocationActivity.this, MapActivity.class);
+            startActivityForResult(intent, 2); // Mã yêu cầu 2 để nhận kết quả từ MapActivity
+        });
+
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "WeatherApp").allowMainThreadQueries().build();
         context = getApplicationContext();
@@ -139,4 +148,26 @@ public class LocationActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            double latitude = data.getDoubleExtra("latitude", 0);
+            double longitude = data.getDoubleExtra("longitude", 0);
+            AppLocation savedLocation = Util.getAppLocationByLatLng(this, latitude, longitude);
+            List<AppLocation> savedLocations = locationDao.getAllLocations();
+            savedLocations.stream()
+                    .filter(o -> o.getName().equals(savedLocation.getName())) // Kiểm tra nếu tên địa điểm đã tồn tại
+                    .forEach(o -> locationDao.delete(o));
+
+            locationDao.insert(savedLocation);
+
+            AppLocation locationInDb = locationDao.getLocationByName(savedLocation.getName());
+
+            Intent intent = new Intent(LocationActivity.this, MainActivity.class);
+            intent.putExtra("current_location", locationInDb);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+    }
 }
