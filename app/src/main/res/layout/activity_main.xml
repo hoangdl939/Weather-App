@@ -226,5 +226,16 @@
       android:padding="2dp"
       android:text="=" />
 
+    <!-- Nút để mở NotificationSettingsActivity -->
+    <Button
+        android:id="@+id/btn_open_notification_settings"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cài đặt thông báo"
+        android:layout_marginStart="10dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4A5C8C"/>
+
   </LinearLayout>
 </LinearLayout>

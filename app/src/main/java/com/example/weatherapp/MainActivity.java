@@ -13,6 +13,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -98,6 +99,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LocationActivity.class);
             activityResultLauncher.launch(intent);
         });
+
+
+        Button openNotificationSettings = findViewById(R.id.btn_open_notification_settings);
+        openNotificationSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NotificationSettingActivity.class);
+            intent.putExtra("latitude", appLocation.getLatitude());
+            intent.putExtra("longitude", appLocation.getLongitude());
+            startActivity(intent);
+        });
+
+
     }
 
     // activity launcher
