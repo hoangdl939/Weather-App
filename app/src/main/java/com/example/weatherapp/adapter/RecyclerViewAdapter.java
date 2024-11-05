@@ -63,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.hourly_weather_layout, parent, false);
+                .inflate(R.layout.hourly_weather_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -76,9 +76,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String weather = hourlyWeathers.get(position).getWeather();
         double tempInKelvin = hourlyWeathers.get(position).getTemperature();
         int tempInCelsius = (int) (tempInKelvin - 273.15);
-
         holder.getTime().setText(hour);
-        holder.getIcon().setImageResource(DefaultConfig.getIconResource(weather));
+
+        int hourInt = Integer.parseInt(hour);
+        if (hourInt >= 6 && hourInt < 18) {
+            holder.getIcon().setImageResource(DefaultConfig.getIconResource(weather));
+        } else {
+            holder.getIcon().setImageResource(DefaultConfig.getIconNightResource(weather));
+        }
+
         holder.getTemperature().setText(String.valueOf(tempInCelsius));
         holder.getHumidity().setText(hourlyWeathers.get(position).getHumidity() + "");
     }

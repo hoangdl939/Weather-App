@@ -22,10 +22,22 @@ public class DefaultConfig {
         put("rain", R.drawable.rainy);
     }};
 
+    public static final HashMap<String, Integer> iconMapNight = new HashMap<String, Integer>() {{
+        put("rain", R.drawable.rainy);
+    }};
+
     public static int getIconResource(String weather) {
         Integer res = iconMap.get(weather.toLowerCase());
         if (res == null) {
             return R.drawable.sun;
+        }
+        return res;
+    }
+
+    public static int getIconNightResource(String weather) {
+        Integer res = iconMapNight.get(weather.toLowerCase());
+        if (res == null) {
+            return R.drawable.moon;
         }
         return res;
     }
